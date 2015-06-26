@@ -20,7 +20,6 @@ if [ $vgaCard==1 ];then
     chmod u+x VBoxLinuxAdditions.run
     ./VBoxLinuxAdditions.run
 fi
-exit
 clear
 
 echo Installation de Openbox
@@ -33,6 +32,7 @@ sleep 2
 # SLiM est mort !!!
 apt-get -y install --no-install-recommends lightdm
 clear
+exit
 
 echo Installation de deborphan
 sleep 2
