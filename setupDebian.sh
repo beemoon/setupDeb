@@ -1,6 +1,11 @@
 #! /bin/bash
 clear
 
+echo Mise a jour des sources.list
+sleep 2
+apt-get -y update && apt-get -y upgrade
+clear
+
 echo Installation de Sudo
 sleep 2
 apt-get -y install sudo
