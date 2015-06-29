@@ -43,6 +43,14 @@ sleep 2
 # SLiM est mort !!!
 apt-get -y install --no-install-recommends lightdm
 clear
+
+echo Installation de Nitrogen
+sleep 2
+apt-get -y install --no-install-recommends nitrogen
+clear
+
+wget -P /usr/share/wallpapers https://raw.githubusercontent.com/beemoon/setupDeb/master/cyborg0.jpg
+
 exit
 
 echo Installation de Iceweasel
@@ -83,11 +91,6 @@ fi
 echo Installation de deborphan
 sleep 2
 apt-get -y install --no-install-recommends deborphan
-clear
-
-echo Installation de Nitrogen
-sleep 2
-apt-get -y install --no-install-recommends nitrogen
 clear
 
 echo Installation de Tint2
