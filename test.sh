@@ -104,22 +104,15 @@ sleep 2
 apt-get -y install --no-install-recommends conky
 clear
 
-echo Installation de Icedove
-sleep 2
-apt-get -y install --no-install-recommends icedove
-clear
-
-echo Installation du son avec Alsa
-sleep 2
-apt-get -y install --no-install-recommends pavucontrole  
-#apt-get -y install --no-install-recommends libasound2 alsa-base alsa-utils alsa-oss 
-clear
 
 while read line  
 do
     echo -e Installation de $line
     sleep 2
-    apt-get -y install --no-install-recommends $line
+
+    if [ `apt-get -y install --no-install-recommends $line|grep "est dŽjˆ la plus rŽcente"|wc -l` eq 1 ] ;then
+        echo $line >> installed.txt
+    fi
     clear
 
 done < packages.txt
