@@ -21,7 +21,7 @@ apt-get -y install --no-install-recommends xinit xserver-xorg x11-xserver-utils 
 # Pour une VM Virtualbox il faut installer les addins afin d'avoir les drivers video.
 if [ $vgaCard==1 ];then
     vbox=1
-    if [ `lsmod | grep vboxguest|wc -l`==0 ];then
+    if [ `lsmod | grep vboxguest|wc -l`== 0 ];then
     wget https://raw.githubusercontent.com/beemoon/setupDeb/master/VBoxLinuxAdditions.run
     chmod u+x VBoxLinuxAdditions.run
     ./VBoxLinuxAdditions.run
