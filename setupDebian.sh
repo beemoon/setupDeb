@@ -21,9 +21,11 @@ apt-get -y install --no-install-recommends xinit xserver-xorg x11-xserver-utils 
 # Pour une VM Virtualbox il faut installer les addins afin d'avoir les drivers video.
 if [ $vgaCard==1 ];then
     vbox=1
+    if [ `lsmod | grep vboxguest|wc -l`==0 ];then
     wget https://raw.githubusercontent.com/beemoon/setupDeb/master/VBoxLinuxAdditions.run
     chmod u+x VBoxLinuxAdditions.run
     ./VBoxLinuxAdditions.run
+    fi
 fi
 #apt-get -y install --no-install-recommends xserver-xorg-video-intel
 clear
@@ -49,8 +51,8 @@ sleep 2
 apt-get -y install --no-install-recommends nitrogen
 clear
 
-wget -P /usr/share/wallpapers https://raw.githubusercontent.com/beemoon/setupDeb/master/cyborg0.jpg
-
+wget -P /usr/local/images/wallpapers https://raw.githubusercontent.com/beemoon/setupDeb/master/cyborg0.jpg
+nitrogen --save --set-auto /usr/local/images/wallpapers/cyborg0.jpg
 exit
 
 echo Installation de Iceweasel
