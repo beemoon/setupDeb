@@ -141,8 +141,7 @@ clear
 
 echo Installation du son avec Alsa
 sleep 2
-apt-get -y install --no-install-recommends pavucontrole  
-#apt-get -y install --no-install-recommends libasound2 alsa-base alsa-utils alsa-oss
+apt-get -y install --no-install-recommends libasound2 alsa-base alsa-utils alsa-oss pavucontrol
 pause
 clear
 
