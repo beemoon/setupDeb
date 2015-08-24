@@ -1,8 +1,10 @@
 #! /bin/bash
 clear
 
-function pause{
-read -s -n1 -p "Appuyez sur une touche pour continuer..."; echo
+function pause(){
+echo
+read -s -n1 -p "Appuyez sur une touche pour continuer..."
+echo
 }
 
 echo Mise a jour des sources.list
@@ -21,7 +23,7 @@ clear
 
 pause
 
-#Detection de la carte grapphique
+#Detection de la carte graphique
 vgaCard=`lspci|grep -i "virtualbox graphics"|wc -l`
 echo -e Installation du mode graphique
 echo
