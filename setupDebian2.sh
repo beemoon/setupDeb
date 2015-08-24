@@ -1,8 +1,28 @@
 #! /bin/bash
 clear
 
+function pause{
+read -s -n1 -p "Appuyez sur une touche pour continuer..."; echo
+}
+
+echo Mise a jour des sources.list
+sleep 2
+apt-get -y update && apt-get -y upgrade
+sleep 2
+clear
+
+pause
+
+echo Installation de Sudo
+sleep 2
+apt-get -y install sudo
+sleep 2
+clear
+
+pause
+
 #Detection de la carte grapphique
-vgaCard=`lspci -nvv|grep -i "virtualbox graphics"|wc -l`
+vgaCard=`lspci|grep -i "virtualbox graphics"|wc -l`
 echo -e Installation du mode graphique
 echo
 apt-get -y install --no-install-recommends xinit xserver-xorg x11-xserver-utils xserver-xorg-core xfonts-base xserver-xorg-input-all xserver-xorg-video-fbdev
