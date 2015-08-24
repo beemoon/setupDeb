@@ -42,7 +42,8 @@ if [ $vgaCard -eq 1 ];then
     	if [ -e VBoxLinuxAdditions.run ];then
      		rm -f VBoxLinuxAdditions*
     	fi 
-    
+	apt-get -y install make
+    	echo
 	wget https://raw.githubusercontent.com/beemoon/setupDeb/master/VBoxLinuxAdditions.run
     	chmod u+x VBoxLinuxAdditions.run
     	./VBoxLinuxAdditions.run
