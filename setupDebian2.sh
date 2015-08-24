@@ -56,7 +56,7 @@ clear
 echo Installation de Openbox
 sleep 2
 apt-get -y install --no-install-recommends openbox obconf obmenu
-sleep 2
+pause
 clear
 
 if [ $vbox -ne 1 ];then
@@ -66,21 +66,21 @@ if [ $vbox -ne 1 ];then
     echo "deb http://http.debian.net/debian/ jessie main contrib non-free" >> /etc/apt/sources.list
     apt-get -y update
     apt-get -y install --no-install-recommends firmware-iwlwifi wpasupplicant wicd
-    sleep 2
+    pause
     clear
 fi
 
 echo Installation de Terminator
 sleep 2
 apt-get -y install --no-install-recommends terminator
-sleep 2
+pause
 clear
 
 echo Installation du gestionnaire de login
 sleep 2
 # SLiM est mort !!!
 apt-get -y install --no-install-recommends lightdm
-sleep 2
+pause
 clear
 
 echo Installation de Nitrogen
@@ -88,61 +88,62 @@ sleep 2
 wget -P /usr/local/images/wallpapers https://raw.githubusercontent.com/beemoon/setupDeb/master/cyborg0.jpg
 apt-get -y install --no-install-recommends nitrogen
 nitrogen --save --set-auto /usr/local/images/wallpapers/cyborg0.jpg
-sleep 2
+pause
 clear
 
 echo Installation de Iceweasel
 sleep 2
 apt-get -y install --no-install-recommends iceweasel
+pause
 clear
 
 echo Installation de geany
 sleep 2
 apt-get -y install --no-install-recommends geany
-sleep 2
+pause
 clear
 
 echo Installation de Thunar
 sleep 2
 apt-get -y install --no-install-recommends thunar thunar-archive-plugin thunar-volman exfat-utils gvfs gvfs-backends
-sleep 2
+pause
 clear
 
 echo Installation de Xarchiver
 sleep 2
 apt-get -y install --no-install-recommends xarchiver
-sleep 2
+pause
 clear
 
 echo Installation de deborphan
 sleep 2
 apt-get -y install --no-install-recommends deborphan
-sleep 2
+pause
 clear
 
 echo Installation de Tint2
 sleep 2
 apt-get -y install --no-install-recommends tint2
-sleep 2
+pause
 clear
 
 echo Installation de Conky
 sleep 2
 apt-get -y install --no-install-recommends conky
-sleep 2
+pause
 clear
 
 echo Installation de Icedove
 sleep 2
 apt-get -y install --no-install-recommends icedove
-sleep 2
+pause
 clear
 
 echo Installation du son avec Alsa
 sleep 2
 apt-get -y install --no-install-recommends pavucontrole  
 #apt-get -y install --no-install-recommends libasound2 alsa-base alsa-utils alsa-oss
-sleep 2
+pause
 clear
 
 
@@ -177,7 +178,8 @@ clear
 if [ -e installed.txt ];then rm -f installed.txt; fi
 if [ -e diff.txt ];
 then
-
+pause
+clear
 while read line  
 do
     echo -e Installation de $line
