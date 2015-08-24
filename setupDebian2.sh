@@ -5,10 +5,12 @@ function pause(){
 echo
 read -s -n1 -p "Appuyez sur une touche pour continuer..."
 echo
+echo
 }
 
 echo Mise a jour des sources.list
 sleep 2
+echo
 apt-get -y update && apt-get -y upgrade
 sleep 2
 clear
@@ -17,7 +19,17 @@ pause
 
 echo Installation de Sudo
 sleep 2
+echo
 apt-get -y install sudo
+sleep 2
+clear
+
+pause
+
+echo Installation de SSH serveur
+sleep 2
+echo
+apt-get -y install openssh-server
 sleep 2
 clear
 
