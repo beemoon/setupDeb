@@ -12,28 +12,22 @@ echo Mise a jour des sources.list
 sleep 2
 echo
 apt-get -y update && apt-get -y upgrade
-sleep 2
-clear
-
 pause
+clear
 
 echo Installation de Sudo
 sleep 2
 echo
 apt-get -y install sudo
-sleep 2
-clear
-
 pause
+clear
 
 echo Installation de SSH serveur
 sleep 2
 echo
 apt-get -y install openssh-server
-sleep 2
-clear
-
 pause
+clear
 
 #Detection de la carte graphique
 vgaCard=`lspci|grep -i "virtualbox graphics"|wc -l`
@@ -55,7 +49,7 @@ if [ $vgaCard -eq 1 ];then
     fi
 fi
 #apt-get -y install --no-install-recommends xserver-xorg-video-intel
-sleep 2
+pause
 clear
 
 echo Installation de Openbox
