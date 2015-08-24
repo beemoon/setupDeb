@@ -38,7 +38,7 @@ apt-get -y install --no-install-recommends xinit xserver-xorg x11-xserver-utils 
 
 if [ $vgaCard -eq 1 ];then
     vbox=1
-    if [ `lsmod | grep vboxguest|wc -l` == 0 ];then
+    if [ `lsmod | grep vboxguest|wc -l` -eq 0 ];then
     	if [ -e VBoxLinuxAdditions.run ];then
      		rm -f VBoxLinuxAdditions*
     	fi 
