@@ -18,7 +18,6 @@ dosfstools
 dpkg-dev
 evince
 evince-common
-firmware-iwlwifi
 firmware-linux
 firmware-linux-free
 firmware-linux-nonfree

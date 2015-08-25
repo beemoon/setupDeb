@@ -12,21 +12,21 @@ echo Mise a jour des sources.list
 sleep 2
 echo
 apt-get -y update && apt-get -y upgrade
-pause
+sleep 2
 clear
 
 echo Installation de Sudo
 sleep 2
 echo
 apt-get -y install sudo
-pause
+sleep 2
 clear
 
 echo Installation de SSH serveur
 sleep 2
 echo
 apt-get -y install openssh-server
-pause
+sleep 2
 clear
 
 #Detection de la carte graphique
@@ -50,13 +50,13 @@ if [ $vgaCard -eq 1 ];then
     fi
 fi
 #apt-get -y install --no-install-recommends xserver-xorg-video-intel
-pause
+sleep 2
 clear
 
 echo Installation de Openbox
 sleep 2
 apt-get -y install --no-install-recommends openbox obconf obmenu
-pause
+sleep 2
 clear
 
 if [ $vbox -ne 1 ];then
@@ -66,21 +66,21 @@ if [ $vbox -ne 1 ];then
     echo "deb http://http.debian.net/debian/ jessie main contrib non-free" >> /etc/apt/sources.list
     apt-get -y update
     apt-get -y install --no-install-recommends firmware-iwlwifi wpasupplicant wicd
-    pause
+    sleep 2
     clear
 fi
 
 echo Installation de Terminator
 sleep 2
 apt-get -y install --no-install-recommends terminator
-pause
+sleep 2
 clear
 
 echo Installation du gestionnaire de login
 sleep 2
 # SLiM est mort !!!
 apt-get -y install --no-install-recommends lightdm
-pause
+sleep 2
 clear
 
 echo Installation de Nitrogen
@@ -88,61 +88,61 @@ sleep 2
 wget -P /usr/local/images/wallpapers https://raw.githubusercontent.com/beemoon/setupDeb/master/cyborg0.jpg
 apt-get -y install --no-install-recommends nitrogen
 nitrogen --save --set-auto /usr/local/images/wallpapers/cyborg0.jpg
-pause
+sleep 2
 clear
 
 echo Installation de Iceweasel
 sleep 2
 apt-get -y install --no-install-recommends iceweasel
-pause
+sleep 2
 clear
 
 echo Installation de geany
 sleep 2
 apt-get -y install --no-install-recommends geany
-pause
+sleep 2
 clear
 
 echo Installation de Thunar
 sleep 2
 apt-get -y install --no-install-recommends thunar thunar-archive-plugin thunar-volman exfat-utils gvfs gvfs-backends
-pause
+sleep 2
 clear
 
 echo Installation de Xarchiver
 sleep 2
 apt-get -y install --no-install-recommends xarchiver
-pause
+sleep 2
 clear
 
 echo Installation de deborphan
 sleep 2
 apt-get -y install --no-install-recommends deborphan
-pause
+sleep 2
 clear
 
 echo Installation de Tint2
 sleep 2
 apt-get -y install --no-install-recommends tint2
-pause
+sleep 2
 clear
 
 echo Installation de Conky
 sleep 2
 apt-get -y install --no-install-recommends conky
-pause
+sleep 2
 clear
 
 echo Installation de Icedove
 sleep 2
 apt-get -y install --no-install-recommends icedove
-pause
+sleep 2
 clear
 
 echo Installation du son avec Alsa
 sleep 2
 apt-get -y install --no-install-recommends libasound2 alsa-base alsa-utils alsa-oss pavucontrol
-pause
+sleep 2
 clear
 
 
@@ -163,7 +163,7 @@ wget https://raw.githubusercontent.com/beemoon/setupDeb/dev/packages.txt
 if [ -e diff.txt ]; then rm -f diff.*; fi
 while read ligne
 do  
-	if [ `grep -q $ligne mesPaquets.txt` ]
+	if [ `grep $ligne mesPaquets.txt|wc -l` -eq 0 ];
 	then
 		echo $ligne>>diff.txt
 		echo $ligne
@@ -174,20 +174,16 @@ rm -f mesPaquets.txt
 sleep 2
 clear
 
-if [ -e installed.txt ];then rm -f installed.txt; fi
 if [ -e diff.txt ];
 then
-pause
-clear
+
 while read line  
 do
     echo -e Installation de $line
+    echo
     sleep 2
 
-    if [ `apt-get -y install --no-install-recommends $line|grep 'la plus r'|wc -l` == 1 ] ;then
-	 echo deja installe
-	 echo $line >> installed.txt
-    fi
+    apt-get -y install --no-install-recommends $line
     echo
 
 done < diff.txt
@@ -199,3 +195,4 @@ echo
 fi
 
 rm -f packages.txt
+history -c
