@@ -42,14 +42,15 @@ if [ $vgaCard -eq 1 ];then
     	if [ -e VBoxLinuxAdditions.run ];then
      		rm -f VBoxLinuxAdditions*
     	fi 
-	apt-get -y install make
+	apt-get -y install gcc make linux-headers-`uname -r`
     	echo
 	wget https://raw.githubusercontent.com/beemoon/setupDeb/master/VBoxLinuxAdditions.run
     	chmod u+x VBoxLinuxAdditions.run
     	./VBoxLinuxAdditions.run
     fi
+else
+	apt-get -y install --no-install-recommends xserver-xorg-video-intel
 fi
-#apt-get -y install --no-install-recommends xserver-xorg-video-intel
 sleep 2
 clear
 
