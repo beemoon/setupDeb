@@ -97,9 +97,7 @@ sleep 2
 if [ -e packages.txt ];then
 	rm -f packages.* 
 fi 
-#wget https://raw.githubusercontent.com/beemoon/setupDeb/dev/packages.txt
-wget https://raw.githubusercontent.com/beemoon/setupDeb/dev/crunchBang.txt
-mv crunchBang.txt packages.txt
+wget https://raw.githubusercontent.com/beemoon/setupDeb/dev/packages.txt
 
 # Difference avec les paquets demandes et ce qui est deja installe
 if [ -e diff.txt ]; then rm -f diff.*; fi
