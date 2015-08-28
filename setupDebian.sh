@@ -16,6 +16,7 @@ function install(){
     apt-get -y install --no-install-recommends $package
     echo
     sleep 2
+    clear
 }
 
 # Mise a jour des depots
@@ -96,7 +97,9 @@ sleep 2
 if [ -e packages.txt ];then
 	rm -f packages.* 
 fi 
-wget https://raw.githubusercontent.com/beemoon/setupDeb/dev/packages.txt
+#wget https://raw.githubusercontent.com/beemoon/setupDeb/dev/packages.txt
+wget https://raw.githubusercontent.com/beemoon/setupDeb/dev/crunchBang.txt
+mv crunchBang.txt packages.txt
 
 # Difference avec les paquets demandes et ce qui est deja installe
 if [ -e diff.txt ]; then rm -f diff.*; fi
@@ -112,6 +115,8 @@ done < packages.txt
 rm -f mesPaquets.txt
 echo
 sleep 2
+
+exit
 
 if [ -e diff.txt ];
 then
