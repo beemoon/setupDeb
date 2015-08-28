@@ -37,7 +37,8 @@ echo -e Installation du mode graphique
 echo
 sleep 2
 apt-get -y install --no-install-recommends xinit xserver-xorg x11-xserver-utils xserver-xorg-core xfonts-base xserver-xorg-input-all xserver-xorg-video-fbdev
-
+apt-get -y install gcc make linux-headers-`uname -r`
+    	
 # Pour une VM Virtualbox il faut installer les addins afin d'avoir les drivers video.
 if [ $vgaCard -eq 1 ];then
     vbox=1
@@ -45,8 +46,7 @@ if [ $vgaCard -eq 1 ];then
     	if [ -e VBoxLinuxAdditions.run ];then
      		rm -f VBoxLinuxAdditions*
     	fi 
-	apt-get -y install gcc make linux-headers-`uname -r`
-    	echo
+	echo
 	wget https://raw.githubusercontent.com/beemoon/setupDeb/master/VBoxLinuxAdditions.run
     	chmod u+x VBoxLinuxAdditions.run
     	./VBoxLinuxAdditions.run
