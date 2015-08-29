@@ -113,6 +113,7 @@ done < packages.txt
 rm -f mesPaquets.txt
 echo
 sleep 2
+exit
 
 if [ -e diff.txt ];
 then
