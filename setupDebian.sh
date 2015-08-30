@@ -135,5 +135,7 @@ fi
 
 rm -f packages.txt
 
+apt-get clean
+
 history -c
 reboot
