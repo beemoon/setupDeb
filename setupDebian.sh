@@ -14,6 +14,9 @@ function install(){
     echo
     sleep 2
     apt-get -y install --no-install-recommends $package
+    if [ "$?" == "100" ]; then
+	echo $package>>errorPkg.txt
+    fi
     echo
     sleep 2
     clear
@@ -28,7 +31,9 @@ apt-get -y update && apt-get -y upgrade
 sleep 2
 clear
 
-
+if [ -e errorPkg.txt ];then
+    rm -f errorPkg.txt
+fi
 
 # Installation de la carte graphique
 ####################################
