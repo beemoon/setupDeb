@@ -142,5 +142,23 @@ done
 dpkg -P $(dpkg -l | awk '$1~/^rc$/{print $2}')
 apt-get clean
 
+
+# Parametrage
+##############
+
+
+# wallpaper
+
+
+# openbox menu
+
+
+# tint2
+
+
+# conky
+
+
+
 history -c
 reboot

@@ -16,7 +16,6 @@ debconf-utils
 dmz-cursor-theme
 dnsmasq-base
 dosfstools
-dpkg-dev
 enchant
 evince
 evince-common
@@ -95,7 +94,6 @@ lzop
 mesa-utils
 minissdpd
 miscfiles
-mobile-broadband-provider-info
 modemmanager
 module-init-tools
 murrine-themes
