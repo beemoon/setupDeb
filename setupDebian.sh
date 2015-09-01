@@ -134,6 +134,12 @@ fi
 
 rm -f packages.txt
 
+while [ `deborphan --guess-all|wc -l` -ne 0 ]
+do
+  deborphan --guess-all | xargs apt-get -y remove --purge
+done
+
+dpkg -P $(dpkg -l | awk '$1~/^rc$/{print $2}')
 apt-get clean
 
 history -c
