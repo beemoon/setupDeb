@@ -13,6 +13,7 @@ consolekit
 cpufrequtils
 cryptsetup-bin
 debconf-utils
+desktop-base
 dmz-cursor-theme
 dnsmasq-base
 dosfstools
