@@ -148,13 +148,25 @@ apt-get clean
 
 
 # wallpaper
+if [ ! -e /usr/local/images/wallpapers/cyborg0.jpg ]
+then
+    wget -P /usr/local/images/wallpapers https://raw.githubusercontent.com/beemoon/setupDeb/master/cyborg0.jpg
+fi
+nitrogen --save --set-auto /usr/local/images/wallpapers/cyborg0.jpg
 
+if [ `grep nitrogen /etc/xdg/openbox/autostart|wc -l` -eq 0 ]
+then
+    echo "nitrogen --restore &" >> /etc/xdg/openbox/autostart  
+fi
 
 # openbox menu
 
 
 # tint2
-
+if [ `grep tint2 /etc/xdg/openbox/autostart|wc -l` -eq 0 ]
+then
+    echo "tint2 &" >> /etc/xdg/openbox/autostart  
+fi
 
 # conky
 
