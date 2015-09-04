@@ -1,0 +1,99 @@
+# conky configuration
+#
+# The list of variables has been removed from this file in favour
+# of keeping the documentation more maintainable.
+# Check http://conky.sf.net for an up-to-date-list.
+#
+# For ideas about how to modify conky, please see:
+# http://crunchbanglinux.org/forums/topic/59/my-conky-config/
+#
+# For help with conky, please see:
+# http://crunchbanglinux.org/forums/topic/2047/conky-help/
+#
+# Enjoy! :)
+##############################################
+# Settings
+##############################################
+background yes
+use_xft yes
+xftfont Liberation Sans:size=9
+xftalpha 1
+update_interval 1.0
+total_run_times 0
+own_window yes
+own_window_transparent yes
+own_window_type desktop
+#own_window_argb_visual yes
+own_window_hints undecorated,below,sticky,skip_taskbar,skip_pager
+own_window_type normal
+double_buffer yes
+minimum_size 200 200
+maximum_width 240
+draw_shades no
+draw_outline no
+draw_borders no
+draw_graph_borders no
+default_color 656667
+default_shade_color 000000
+default_outline_color 828282
+alignment top_right
+gap_x 12
+gap_y 56
+no_buffers yes
+uppercase no
+cpu_avg_samples 2
+override_utf8_locale no
+##############################################
+#  Output
+##############################################
+TEXT
+
+${color grey}N E T W O R K I N G
+${hr}
+${color grey}Host:$alignr$nodename
+${color grey}IP address: $alignr${addr eth0}
+Upload:$color $alignr${upspeed eth0}
+${color grey}Download:$color $alignr${downspeed eth0}
+${color black}${downspeedgraph eth0 32,150 ff0000 0000ff} $alignr${color black}${upspeedgraph eth0 32,150 0000ff ff0000}
+
+${color grey}F I L E   S Y S T E M
+${hr}
+${color grey}Uptime:$color $uptime
+${color grey}Frequency (in MHz):$color $freq
+${color grey}Root Usage (${fs_size /}): $color ${fs_used_perc /}% ${fs_bar 6 }
+${color grey}Home Usage (${fs_size /home}): $color ${fs_used /home} ${fs_bar 6 } 
+${color grey}RAM Usage:$color $memperc% ${membar 4}
+${color grey}Swap Usage:$color $swapperc% ${swapbar 4}
+${color grey}CPU Usage:$color $cpu% ${cpubar 4}
+
+${color grey}Processes:$color $processes  ${color grey}Running:$color $running_processes
+${hr}
+${color grey}Name              PID   CPU%   MEM%
+${color #ddaa00} ${top name 1} ${top pid 1} ${top cpu 1} ${top mem 1}
+${color lightgrey} ${top name 2} ${top pid 2} ${top cpu 2} ${top mem 2}
+${color lightgrey} ${top name 3} ${top pid 3} ${top cpu 3} ${top mem 3}
+${color lightgrey} ${top name 4} ${top pid 4} ${top cpu 4} ${top mem 4}
+
+
+
+
+S H O R T C U T    K E Y S
+${hr}
+Alt+F2$alignr Run Dialog
+Alt+F3$alignr Alt Menu
+Alt+Space$alignr Main Menu
+Alt+Tab$alignr Client Menu
+Alt+t$alignr Terminal
+Alt+i$alignr Icedove
+Alt+f$alignr File Manager
+Alt+e$alignr Editor
+Alt+s$alignr PAC Manager
+Alt+w$alignr Web Browser
+Alt+h$alignr Task Manager
+Alt+l$alignr Lock Screen
+Alt+v$alignr Volume Control
+Alt+x$alignr Logout
+PrtSc$alignr Screenshot
+
+
+

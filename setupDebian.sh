@@ -152,24 +152,38 @@ if [ ! -e /usr/local/images/wallpapers/cyborg0.jpg ]
 then
     wget -P /usr/local/images/wallpapers https://raw.githubusercontent.com/beemoon/setupDeb/master/cyborg0.jpg
 fi
-nitrogen --save --set-auto /usr/local/images/wallpapers/cyborg0.jpg
 
 if [ `grep nitrogen /etc/xdg/openbox/autostart|wc -l` -eq 0 ]
 then
-    echo "nitrogen --restore &" >> /etc/xdg/openbox/autostart  
+    echo "nitrogen --save --set-auto /usr/local/images/wallpapers/cyborg0.jpg &" >> /etc/xdg/openbox/autostart
+    echo "sleep 2" >> /etc/xdg/openbox/autostart
 fi
 
-# openbox menu
-
+# transparence
+#if [ `grep xcompmgr /etc/xdg/openbox/autostart|wc -l` -eq 0 ]
+#then
+#    echo "xcompmgr -c -t-5 -l-5 -r4.2 -o.55 &" >> /etc/xdg/openbox/autostart  
+#fi
 
 # tint2
+wget -P /etc/xdg/tint2/tint2rc -N https://raw.githubusercontent.com/beemoon/setupDeb/master/tint2rc
+chmod 644 /etc/xdg/tint2/tint2rc
 if [ `grep tint2 /etc/xdg/openbox/autostart|wc -l` -eq 0 ]
 then
     echo "tint2 &" >> /etc/xdg/openbox/autostart  
 fi
 
 # conky
+wget -P /etc/conky -N https://raw.githubusercontent.com/beemoon/setupDeb/master/conky.conf
+chmod 644 /etc/conky/conky.conf
+if [ `grep conky /etc/xdg/openbox/autostart|wc -l` -eq 0 ]
+then
+    echo "conky &" >> /etc/xdg/openbox/autostart  
+fi
 
+# openbox menu
+#wget -P /etc/conky -N https://raw.githubusercontent.com/beemoon/setupDeb/master/conky.conf
+#chmod 644 /etc/conky/conky.conf
 
 
 history -c
