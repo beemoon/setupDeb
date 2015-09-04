@@ -166,7 +166,7 @@ fi
 #fi
 
 # tint2
-wget -P /etc/xdg/tint2/tint2rc -N https://raw.githubusercontent.com/beemoon/setupDeb/master/tint2rc
+wget -P /etc/xdg/tint2/tint2rc -N https://raw.githubusercontent.com/beemoon/setupDeb/dev/tint2rc
 chmod 644 /etc/xdg/tint2/tint2rc
 if [ `grep tint2 /etc/xdg/openbox/autostart|wc -l` -eq 0 ]
 then
@@ -174,7 +174,7 @@ then
 fi
 
 # conky
-wget -P /etc/conky -N https://raw.githubusercontent.com/beemoon/setupDeb/master/conky.conf
+wget -P /etc/conky -N https://raw.githubusercontent.com/beemoon/setupDeb/dev/conky.conf
 chmod 644 /etc/conky/conky.conf
 if [ `grep conky /etc/xdg/openbox/autostart|wc -l` -eq 0 ]
 then
