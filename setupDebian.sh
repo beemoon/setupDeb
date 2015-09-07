@@ -166,11 +166,15 @@ fi
 #fi
 
 # tint2
-wget -P /etc/xdg/tint2/tint2rc -N https://raw.githubusercontent.com/beemoon/setupDeb/dev/tint2rc
+wget -P /etc/xdg/tint2 -N https://raw.githubusercontent.com/beemoon/setupDeb/dev/tint2rc
 chmod 644 /etc/xdg/tint2/tint2rc
 if [ `grep tint2 /etc/xdg/openbox/autostart|wc -l` -eq 0 ]
 then
     echo "tint2 &" >> /etc/xdg/openbox/autostart  
+fi
+if [ -e ~/.config/tint2/tint2rc ]
+then
+    rm -f ~/.config/tint2/tint2rc
 fi
 
 # conky
