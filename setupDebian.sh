@@ -63,19 +63,6 @@ fi
 echo
 sleep 2
 
-
-
-# Installation des paquets de ma distribution « myDeb »
-#######################################################
-wget https://raw.githubusercontent.com/beemoon/setupDeb/dev/myDeb.txt
-while read line  
-do
-    install $line
-done < myDeb.txt
-rm -f myDeb.txt
-
-
-
 # Installation du wifi
 ######################
 if [ $vbox -ne 1 ];then
@@ -85,10 +72,19 @@ if [ $vbox -ne 1 ];then
     # Debian 8 "Jessie"
     echo "deb http://http.debian.net/debian/ jessie main contrib non-free" >> /etc/apt/sources.list
     apt-get -y update
-    apt-get -y install --no-install-recommends firmware-iwlwifi wpasupplicant wicd
+    apt-get -y install --no-install-recommends firmware-iwlwifi wpasupplicant
     echo
     sleep 2
 fi
+
+# Installation des paquets de ma distribution « myDeb »
+#######################################################
+wget https://raw.githubusercontent.com/beemoon/setupDeb/dev/myDeb.txt
+while read line  
+do
+    install $line
+done < myDeb.txt
+rm -f myDeb.txt
 
 
 # Paquets supplementaires a installer
@@ -119,6 +115,7 @@ rm -f mesPaquets.txt
 echo
 sleep 2
 
+rm -f diff.txt
 if [ -e diff.txt ];
 then
     while read line  

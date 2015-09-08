@@ -51,3 +51,4 @@ alsa-utils
 alsa-oss
 pavucontrol
 deborphan
+wicd
