@@ -22,15 +22,18 @@ function install(){
     clear
 }
 
-# Mise a jour des depots
+# Mise a jour des depots    
 ########################
 echo Mise a jour des sources.list
 sleep 2
 echo
+echo "deb http://http.debian.net/debian/ jessie main contrib non-free" >> /etc/apt/sources.list
 apt-get -y update && apt-get -y upgrade
 sleep 2
 clear
 
+# Initialise le fichier de log
+##############################
 if [ -e errorPkg.txt ];then
     rm -f errorPkg.txt
 fi
@@ -70,15 +73,20 @@ if [ $vbox -ne 1 ];then
     echo
     sleep 2
     # Debian 8 "Jessie"
-    echo "deb http://http.debian.net/debian/ jessie main contrib non-free" >> /etc/apt/sources.list
-    apt-get -y update
     apt-get -y install --no-install-recommends firmware-iwlwifi wpasupplicant
     echo
     sleep 2
 fi
 
+# Liste des paquets deja installés
+##################################
+dpkg --get-selections >mesPaquets.txt
+
 # Installation des paquets de ma distribution « myDeb »
 #######################################################
+if [ -e myDeb.txt ];then
+	rm -f myDeb.*
+fi 
 wget https://raw.githubusercontent.com/beemoon/setupDeb/dev/myDeb.txt
 while read line  
 do
@@ -86,13 +94,39 @@ do
 done < myDeb.txt
 rm -f myDeb.txt
 
+# Difference avec les paquets demandes et ce qui est deja installe
+if [ -e diff.txt ]; then rm -f diff.*; fi
+while read ligne
+do  
+    if [ `grep $ligne mesPaquets.txt|wc -l` -eq 0 ];
+    then
+            echo $ligne>>diff.txt
+            echo $ligne
+    fi
+
+done < packages.txt
+rm -f mesPaquets.txt
+echo
+sleep 2
+
+rm -f diff.txt
+if [ -e diff.txt ];
+then
+    while read line  
+    do
+        install $line
+    done < diff.txt
+    rm -f diff.txt
+fi
+
+
+
+# Liste des paquets deja installés
+##################################
+dpkg --get-selections >mesPaquets.txt
 
 # Paquets supplementaires a installer
-################################
-dpkg --get-selections >mesPaquets.txt
-sleep 2
-clear
-
+#####################################
 echo -e Liste des paquets a installer
 sleep 2
 if [ -e packages.txt ];then
