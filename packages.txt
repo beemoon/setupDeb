@@ -1,6 +1,6 @@
 aptdaemon
 aptdaemon-data
-arandr
+
 arj
 avahi-daemon
 avahi-utils
@@ -78,11 +78,9 @@ module-init-tools
 
 notification-daemon
 
-ntp
 obex-data-server
 openssh-blacklist
 openssh-blacklist-extra
-openvpn
 
 pm-utils
 policykit-1-gnome
@@ -145,8 +143,6 @@ vlc-nox
 vlc-plugin-notify
 vlc-plugin-pulse
 
-vpnc
-wmctrl
 x11-apps
 x11-session-utils
 x11-xfs-utils
@@ -172,4 +168,3 @@ xtightvncviewer
 zenity
 zenity-common
 zoo
-powermgmt-base

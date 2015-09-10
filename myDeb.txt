@@ -44,3 +44,5 @@ gtk2-engines
 gtk2-engines-murrine
 murrine-themes
 upower
+ntp
+arandr
