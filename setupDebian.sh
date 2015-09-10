@@ -145,6 +145,7 @@ rm -f myApps.txt
 echo
 sleep 2
 
+rm -f diff.txt
 if [ -e diff.txt ];
 then
     while read line  
