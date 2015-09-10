@@ -90,11 +90,6 @@ if [ -e myDeb.txt ];then
 	rm -f myDeb.*
 fi 
 wget https://raw.githubusercontent.com/beemoon/setupDeb/dev/myDeb.txt
-while read line  
-do
-    install $line
-done < myDeb.txt
-rm -f myDeb.txt
 
 # Difference avec les paquets demandes et ce qui est deja installe
 if [ -e diff.txt ]; then rm -f diff.*; fi
@@ -106,8 +101,8 @@ do
             echo $ligne
     fi
 
-done < packages.txt
-rm -f mesPaquets.txt
+done < myDeb.txt
+rm -f myDeb.txt
 echo
 sleep 2
 
@@ -144,7 +139,7 @@ do
     fi
 
 done < myApps.txt
-rm -f mesPaquets.txt
+rm -f myApps.txt
 echo
 sleep 2
 
@@ -185,7 +180,7 @@ do
     fi
 
 done < packages.txt
-rm -f mesPaquets.txt
+rm -f paquets.txt
 echo
 sleep 2
 
@@ -202,8 +197,7 @@ else
     echo Il n\'y a rien a installer
     echo
 fi
-
-rm -f packages.txt
+rm -f mesPaquets.txt
 
 while [ `deborphan --guess-all|wc -l` -ne 0 ]
 do
