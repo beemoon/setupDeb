@@ -38,7 +38,7 @@ if [ -e errorPkg.txt ];then
     rm -f errorPkg.txt
 fi
 
-ìf [ `dpkg --get-selections | grep xserver | wc -l` -eq 0 ]; then
+if [ `dpkg --get-selections | grep xserver | wc -l` -eq 0 ]; then
     # Installation de la carte graphique
     ####################################
     vgaCard=`lspci|grep -i "virtualbox graphics"|wc -l`
