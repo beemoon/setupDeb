@@ -111,7 +111,6 @@ rm -f mesPaquets.txt
 echo
 sleep 2
 
-rm -f diff.txt
 if [ -e diff.txt ];
 then
     while read line  
@@ -121,7 +120,46 @@ then
     rm -f diff.txt
 fi
 
+# Liste des paquets deja installés
+##################################
+dpkg --get-selections >mesPaquets.txt
 
+# Applications a installer
+#####################################
+echo -e Liste des paquets a installer
+sleep 2
+if [ -e myApps.txt ];then
+	rm -f myApps.* 
+fi 
+wget https://raw.githubusercontent.com/beemoon/setupDeb/dev/myApps.txt
+
+# Difference avec les paquets demandes et ce qui est deja installe
+if [ -e diff.txt ]; then rm -f diff.*; fi
+while read ligne
+do  
+    if [ `grep $ligne mesPaquets.txt|wc -l` -eq 0 ];
+    then
+            echo $ligne>>diff.txt
+            echo $ligne
+    fi
+
+done < myApps.txt
+rm -f mesPaquets.txt
+echo
+sleep 2
+
+if [ -e diff.txt ];
+then
+    while read line  
+    do
+        install $line
+    done < diff.txt
+    rm -f diff.txt
+
+else
+    echo Il n\'y a rien a installer
+    echo
+fi
 
 # Liste des paquets deja installés
 ##################################

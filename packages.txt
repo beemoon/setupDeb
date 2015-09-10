@@ -40,7 +40,8 @@ gnome-mime-data
 gparted
 
 gsfonts
-
+gvfs
+gvfs-backends
 gsimplecal
 
 gstreamer0.10-gconf
