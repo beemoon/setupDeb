@@ -38,33 +38,35 @@ if [ -e errorPkg.txt ];then
     rm -f errorPkg.txt
 fi
 
-# Installation de la carte graphique
-####################################
-vgaCard=`lspci|grep -i "virtualbox graphics"|wc -l`
-
-echo -e Installation du mode graphique
-echo
-sleep 2
-apt-get -y install --no-install-recommends xinit xserver-xorg x11-xserver-utils xserver-xorg-core xfonts-base xserver-xorg-input-all xserver-xorg-video-fbdev
-apt-get -y install gcc make linux-headers-`uname -r`
-    	
-# Pour une VM Virtualbox il faut installer les addins afin d'avoir les drivers video.
-if [ $vgaCard -eq 1 ];then
-    vbox=1
-    if [ `lsmod | grep vboxguest|wc -l` -eq 0 ];then
-    	if [ -e VBoxLinuxAdditions.run ];then
-     		rm -f VBoxLinuxAdditions*
-    	fi 
-	echo
-	wget https://raw.githubusercontent.com/beemoon/setupDeb/master/VBoxLinuxAdditions.run
-    	chmod u+x VBoxLinuxAdditions.run
-    	./VBoxLinuxAdditions.run
+ìf [ `dpkg --get-selections | grep xserver | wc -l` -eq 0 ]; then
+    # Installation de la carte graphique
+    ####################################
+    vgaCard=`lspci|grep -i "virtualbox graphics"|wc -l`
+    
+    echo -e Installation du mode graphique
+    echo
+    sleep 2
+    apt-get -y install --no-install-recommends xinit xserver-xorg x11-xserver-utils xserver-xorg-core xfonts-base xserver-xorg-input-all xserver-xorg-video-fbdev
+    apt-get -y install gcc make linux-headers-`uname -r`
+            
+    # Pour une VM Virtualbox il faut installer les addins afin d'avoir les drivers video.
+    if [ $vgaCard -eq 1 ];then
+        vbox=1
+        if [ `lsmod | grep vboxguest|wc -l` -eq 0 ];then
+            if [ -e VBoxLinuxAdditions.run ];then
+                    rm -f VBoxLinuxAdditions*
+            fi 
+            echo
+            wget https://raw.githubusercontent.com/beemoon/setupDeb/master/VBoxLinuxAdditions.run
+            chmod u+x VBoxLinuxAdditions.run
+            ./VBoxLinuxAdditions.run
+        fi
+    else
+            apt-get -y install --no-install-recommends xserver-xorg-video-intel
     fi
-else
-	apt-get -y install --no-install-recommends xserver-xorg-video-intel
+    echo
+    sleep 2
 fi
-echo
-sleep 2
 
 # Installation du wifi
 ######################
