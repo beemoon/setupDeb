@@ -86,6 +86,8 @@ dpkg --get-selections >mesPaquets.txt
 
 # Installation des paquets de ma distribution « myDeb »
 #######################################################
+echo -e Liste des applications minimalesa installer
+sleep 2
 if [ -e myDeb.txt ];then
 	rm -f myDeb.*
 fi 
@@ -121,7 +123,7 @@ dpkg --get-selections >mesPaquets.txt
 
 # Applications a installer
 #####################################
-echo -e Liste des paquets a installer
+echo -e Liste des applications a installer
 sleep 2
 if [ -e myApps.txt ];then
 	rm -f myApps.* 
@@ -162,7 +164,7 @@ dpkg --get-selections >mesPaquets.txt
 
 # Paquets supplementaires a installer
 #####################################
-echo -e Liste des paquets a installer
+echo -e Liste des paquets supplementaires a installer
 sleep 2
 if [ -e packages.txt ];then
 	rm -f packages.* 
