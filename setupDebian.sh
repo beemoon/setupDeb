@@ -145,15 +145,14 @@ rm -f myApps.txt
 echo
 sleep 2
 
-rm -f diff.txt
 if [ -e diff.txt ];
 then
     while read line  
     do
         install $line
     done < diff.txt
-    rm -f diff.txt
-
+    #rm -f diff.txt
+    mv diff.txt diff2.xt
 else
     echo Il n\'y a rien a installer
     echo
@@ -194,7 +193,7 @@ then
     do
         install $line
     done < diff.txt
-    rm -f diff.txt
+    #rm -f diff.txt
 
 else
     echo Il n\'y a rien a installer
