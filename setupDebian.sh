@@ -47,7 +47,7 @@ if [ `dpkg --get-selections | grep xserver | wc -l` -eq 0 ]; then
     echo
     sleep 2
     apt-get -y install --no-install-recommends xinit xserver-xorg x11-xserver-utils xserver-xorg-core xfonts-base xserver-xorg-input-all xserver-xorg-video-fbdev
-    apt-get -y install gcc make linux-headers-`uname -r`
+    apt-get -y install gcc make dkms linux-headers-`uname -r`
             
     # Pour une VM Virtualbox il faut installer les addins afin d'avoir les drivers video.
     if [ $vgaCard -eq 1 ];then
